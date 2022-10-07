@@ -36,7 +36,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constrainedWidth="true"
         app:layout_constraintHorizontal_bias="0.0"
-        tools:text="Sample Tweet" />
+        tools:text="Sample Tweet"
+        android:autoLink="web"/>
 
     <TextView
         android:id="@+id/tvTime"
@@ -44,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:text="TextView"
+        android:text="3m"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.codepath.apps.restclienttemplate.models.Tweet
+import java.util.*
+import kotlin.collections.ArrayList
 
 class TweetsAdapter(val tweets: ArrayList<Tweet>) : RecyclerView.Adapter<TweetsAdapter.ViewHolder>() {
 
@@ -25,7 +27,7 @@ class TweetsAdapter(val tweets: ArrayList<Tweet>) : RecyclerView.Adapter<TweetsA
 
         holder.tvUserName.text = tweet.user?.name
         holder.tvTweetBody.text = tweet.body
-        holder.tvTime.text = tweet.createdAt
+        holder.tvTime.text = generateTime(tweet.createdAt)
 
         Glide.with(holder.itemView).load(tweet.user?.publicImageUrl).into(holder.ivProfileImage)
     }
@@ -50,5 +52,30 @@ class TweetsAdapter(val tweets: ArrayList<Tweet>) : RecyclerView.Adapter<TweetsA
         val tvUserName = itemView.findViewById<TextView>(R.id.tvUsername)
         val tvTweetBody = itemView.findViewById<TextView>(R.id.tvTweetBody)
         val tvTime = itemView.findViewById<TextView>(R.id.tvTime)
+    }
+
+    companion object {
+        fun generateTime(tstring: String):String {
+            val createTime = Date(tstring)
+            val currentTime = Date()
+            val diff = currentTime.time - createTime.time
+            currentTime.toString()
+
+            val nd = (1000 * 24 * 60 * 60).toLong()
+            val nh = (1000 * 60 * 60).toLong()
+            val nm = (1000 * 60).toLong()
+            val ns = 1000.toLong()
+
+            val day = diff / nd
+            val hour = diff % nd / nh
+            val min = diff % nd % nh / nm
+            val sec = diff % nd % nh % nm / ns
+
+            var ret = ""
+            if (day>0) ret+="$day"+"d"
+            if (hour>0) ret+="$hour"+"h"
+            if (min>0) ret+="$min"+"m"
+            return ret
+        }
     }
 }
