@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.RestClientTemplateKotlin" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#1DA1F2</item>
+        <item name="colorPrimary">#FF1DA1F2</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
